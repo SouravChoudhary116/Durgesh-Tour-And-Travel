@@ -1,95 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Durgesh Tour & Travel</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
-    header { background: #0077ff; padding: 20px; color: #fff; text-align: center; font-size: 26px; font-weight: bold; }
-    .container { width: 90%; max-width: 600px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
-    button { width: 100%; padding: 14px; background: #0077ff; color: #fff; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; }
-    button:hover { background: #005fd1; }
-    .dropdown-results { position: relative; }
-    .results-box { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; display: none; z-index: 10; }
-    .result-item { padding: 10px; cursor: pointer; }
-    .result-item:hover { background: #eaeaea; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f6f9ff;
+      color: #07203a;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 24px;
+      color: #0b72ff;
+    }
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #07203a;
+      font-weight: 600;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .hero h1 {
+      margin-top: 0;
+    }
+    .hero p {
+      color: #6b7280;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      margin-top: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .btn-primary {
+      background: #0b72ff;
+      color: white;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #0b72ff;
+      color: #0b72ff;
+      margin-left: 10px;
+    }
+    .booking-card {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .booking-card h3 {
+      margin-top: 0;
+    }
+    .booking-card input, .booking-card select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    section h2, section h3 {
+      margin-top: 0;
+    }
+    .services, .packages, .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .card {
+      flex: 1;
+      min-width: 250px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .card p {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px 0;
+      text-align: center;
+      color: #6b7280;
+    }
+    @media (max-width: 768px) {
+      .hero, .services, .packages, .testimonials {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">Durgesh Tour & Travel</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#booking">Book</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-<header>Durgesh Tour & Travel</header>
+    <!-- Hero + Booking -->
+    <section class="hero" id="booking">
+      <div class="hero-text">
+        <div class="eyebrow">Explore Jharkhand & Beyond</div>
+        <h1>Comfort, Safety & Trust in Every Ride</h1>
+        <p>Durgesh Tour & Travel offers reliable taxis, electric auto city rides, and customized tour packages across Hazaribagh, Ranchi, and nearby cities.</p>
+        <a class="btn btn-primary" href="#booking">Book Now</a>
+        <a class="btn btn-secondary" href="#packages">View Packages</a>
+      </div>
 
-<div class="container">
-  <h2>Quick Booking</h2>
-  <form id="bookingForm" onsubmit="sendToWhatsapp(event)">
+      <div class="booking-card">
+        <h3>Quick Booking</h3>
+        <form onsubmit="event.preventDefault(); alert('Booking submitted — demo!');">
+          <label>Full Name
+            <input required type="text" placeholder="Your full name">
+          </label>
+          <label>Mobile Number
+            <input required type="tel" placeholder="+91 9XXXXXXXXX">
+          </label>
+          <label>Pickup Location
+            <input required type="text" placeholder="Hazaribagh, Jharkhand">
+          </label>
+          <label>Drop Location
+            <input required type="text" placeholder="Destination">
+          </label>
+          <label>Date
+            <input required type="date">
+          </label>
+          <label>Time
+            <input required type="time">
+          </label>
+          <label>Vehicle Type
+            <select>
+              <option>Sedan (Dzire)</option>
+              <option>SUV (Ertiga)</option>
+              <option>Electric Auto</option>
+              <option>Tempo Traveller</option>
+            </select>
+          </label>
+          <label>Special Requests
+            <input type="text" placeholder="Child seat, extra luggage...">
+          </label>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">Submit Booking</button>
+        </form>
+      </div>
+    </section>
 
-    <label>Your Name</label>
-    <input type="text" id="name" required />
+    <!-- Services Section -->
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="card">
+          <h4>Local & Outstation Taxi</h4>
+          <p>Affordable cabs for city and outstation travel. Clean cars and verified drivers.</p>
+        </div>
+        <div class="card">
+          <h4>Electric Auto (City Ride)</h4>
+          <p>Eco-friendly rides ideal for short city trips and daily commute.</p>
+        </div>
+        <div class="card">
+          <h4>Airport & Railway Transfers</h4>
+          <p>Punctual pickup and drop service for Ranchi, Patna, Kolkata, and nearby stations.</p>
+        </div>
+      </div>
+    </section>
 
-    <label>Mobile Number</label>
-    <input type="text" id="mobile" required />
+    <!-- Packages Section -->
+    <section id="packages">
+      <h2>Popular Packages</h2>
+      <div class="packages">
+        <div class="card">
+          <h4>Ranchi Weekend Tour</h4>
+          <p>Tagore Hill • Rock Garden • Patratu Valley — 2N/3D (customizable)</p>
+        </div>
+        <div class="card">
+          <h4>Hazaribagh Nature Tour</h4>
+          <p>Hazaribagh Lake • Canary Hill • Wildlife Sanctuary — Day trip options</p>
+        </div>
+        <div class="card">
+          <h4>Bodh Gaya Pilgrimage</h4>
+          <p>Mahabodhi Temple • Thai Monastery • Spiritual stay options</p>
+        </div>
+      </div>
+    </section>
 
-    <label>Destination</label>
-    <div class="dropdown-results">
-      <input type="text" id="destination" oninput="filterOptions()" autocomplete="off" required />
-      <div class="results-box" id="resultsBox"></div>
-    </div>
+    <!-- Testimonials -->
+    <section>
+      <h2>Testimonials</h2>
+      <div class="testimonials">
+        <div class="card">
+          <strong>Rina S.</strong>
+          <p>"Best travel service in Hazaribagh! Good behavior and clean cab."</p>
+        </div>
+        <div class="card">
+          <strong>Mohit K.</strong>
+          <p>"Affordable price and professional driver. Highly recommended."</p>
+        </div>
+        <div class="card">
+          <strong>Anita P.</strong>
+          <p>"Punctual pickup to Ranchi airport. Very helpful staff."</p>
+        </div>
+      </div>
+    </section>
 
-    <label>Travel Date</label>
-    <input type="date" id="date" required />
+    <!-- Contact Section -->
+    <section id="contact" class="card" style="margin-top:30px;">
+      <h2>Contact & Location</h2>
+      <p><strong>Phone:</strong> +91-XXXXXXXXXX &nbsp; | &nbsp; <strong>Email:</strong> info@durgeshtours.com</p>
+      <p><strong>Address:</strong> Hazaribagh, Jharkhand</p>
+      <div>
+        <iframe title="Durgesh Tour & Travel - map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." style="width:100%;height:200px;border:0;border-radius:10px" loading="lazy"></iframe>
+      </div>
+    </section>
 
-    <button type="submit">Book Now</button>
-  </form>
-</div>
+    <!-- Footer -->
+    <footer>
+      © 2025 Durgesh Tour & Travel | <a href="#" style="color:#6b7280; text-decoration:none;">Privacy</a> | <a href="#" style="color:#6b7280; text-decoration:none;">Terms</a>
+    </footer>
 
-<script>
-  const jharkhandPlaces = [
-    "Ranchi", "Hazaribagh", "Jamshedpur", "Dhanbad", "Bokaro", "Giridih", "Deoghar", "Ramgarh", "Chatra", "Gumla", "Palamu", "Lohardaga", "Koderma", "Latehar", "Simdega", "Sahebganj", "Dumka", "Godda", "Pakur", "Jamtara", "Khunti", "Seraikela", "West Singhbhum", "East Singhbhum"
-  ];
-
-  function filterOptions() {
-    const input = document.getElementById("destination").value.toLowerCase();
-    const resultsBox = document.getElementById("resultsBox");
-    resultsBox.innerHTML = "";
-
-    if (input === "") {
-      resultsBox.style.display = "none";
-      return;
-    }
-
-    const filtered = jharkhandPlaces.filter(place => place.toLowerCase().includes(input));
-
-    filtered.forEach(place => {
-      const item = document.createElement("div");
-      item.classList.add("result-item");
-      item.textContent = place;
-      item.onclick = () => {
-        document.getElementById("destination").value = place;
-        resultsBox.style.display = "none";
-      };
-      resultsBox.appendChild(item);
-    });
-
-    resultsBox.style.display = filtered.length ? "block" : "none";
-  }
-
-  function sendToWhatsapp(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const mobile = document.getElementById("mobile").value;
-    const destination = document.getElementById("destination").value;
-    const date = document.getElementById("date").value;
-
-    const msg = `New Booking Request:%0AName: ${name}%0AMobile: ${mobile}%0ADestination: ${destination}%0ADate: ${date}`;
-
-    const whatsappURL = `https://wa.me/918228002439?text=${msg}`;
-
-    window.open(whatsappURL, "_blank");
-  }
-</script>
-
+  </div>
 </body>
 </html>
